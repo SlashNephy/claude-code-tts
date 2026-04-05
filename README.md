@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ \"$CLAUDE_CODE_TTS_ENABLED\" = \"1\" ] && uv --directory ~/ghq/github.com/SlashNephy/claude-code-tts run main.py || true",
+            "command": "uv --directory ~/ghq/github.com/SlashNephy/claude-code-tts run main.py",
             "async": true
           }
         ]
