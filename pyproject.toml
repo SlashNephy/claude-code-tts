@@ -2,4 +2,9 @@
 name = "claude-code-tts"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = ["misaki[en,ja]==0.9.4", "mlx-audio==0.4.2", "soundfile==0.13.1"]
+dependencies = [
+    "alkana>=0.0.3",
+    "misaki[en,ja]==0.9.4",
+    "mlx-audio==0.4.2",
+    "soundfile==0.13.1",
+]
