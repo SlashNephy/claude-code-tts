@@ -226,7 +226,7 @@ dependencies = [
 requires-dist = [
     { name = "alkana", specifier = ">=0.0.3" },
     { name = "misaki", extras = ["en", "ja"], specifier = "==0.9.4" },
-    { name = "mlx-audio", specifier = "==0.4.7" },
+    { name = "mlx-audio", specifier = "==0.4.8" },
     { name = "soundfile", specifier = "==0.14.0" },
 ]
 
@@ -783,7 +783,7 @@ wheels = [
 
 [[package]]
 name = "mlx-audio"
-version = "0.4.7"
+version = "0.4.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
@@ -796,9 +796,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "transformers" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3e/b0/8d83fecf104a94fbbfa0681e67231aa763dcc740732cb4f02c2f09946b91/mlx_audio-0.4.7.tar.gz", hash = "sha256:bfd2ee61342ca58ba15b4cef20ff7910600788cb7c604c8bffd32a45a3d62c98", size = 1513613, upload-time = "2026-08-03T00:42:32.484Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/16/e4/a936c9e2a94b0cf44aacd3e2513bc3ad9814f6faa0a585a841182115fd67/mlx_audio-0.4.8.tar.gz", hash = "sha256:898b999a1deb1aeaa9dad06d62b0c5973e966586ee8d79b74474b9520c9f7b18", size = 1529077, upload-time = "2026-08-10T17:58:54.679Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3f/be/42234a5891b3d6d5078434d657cfcda6c5cce31117cb19fc9915422cc306/mlx_audio-0.4.7-py3-none-any.whl", hash = "sha256:e7580e5ee740ca182e93b764d778b8c834d4e07bf91835cbaaafef196e2e058c", size = 1820201, upload-time = "2026-08-03T00:42:30.61Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/a5/3f80f56f4592da0ac319e626e33745dead7fa2da586981faed6d584caf20/mlx_audio-0.4.8-py3-none-any.whl", hash = "sha256:e62859facd7ae8a93c13870921dfab03db483fe3c34b66384cb865b980f8ebe6", size = 1837134, upload-time = "2026-08-10T17:58:52.879Z" },
 ]
 
 [[package]]
