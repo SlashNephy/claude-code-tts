@@ -19,6 +19,8 @@ VOICE = os.environ.get("CLAUDE_CODE_TTS_VOICE", "jf_alpha")
 SPEED = float(os.environ.get("CLAUDE_CODE_TTS_SPEED", "1.0"))
 LANG_CODE = os.environ.get("CLAUDE_CODE_TTS_LANG_CODE", "j")
 LINE_LIMIT = int(os.environ.get("CLAUDE_CODE_TTS_LINE_LIMIT", "0"))
+# モデル固有の引数 (Irodori-TTS の instruct など) を model.generate() にそのまま渡す
+GENERATE_KWARGS = json.loads(os.environ.get("CLAUDE_CODE_TTS_GENERATE_KWARGS", "{}"))
 
 
 def load_json_file(file_name: str) -> dict:
@@ -80,9 +82,12 @@ if __name__ == "__main__":
     for chunk in chunks:
         for result in model.generate(
             text=chunk,
-            voice=VOICE,
-            speed=SPEED,
-            lang_code=LANG_CODE,
+            **{
+                "voice": VOICE,
+                "speed": SPEED,
+                "lang_code": LANG_CODE,
+                **GENERATE_KWARGS,
+            },
         ):
             with tempfile.NamedTemporaryFile(suffix=".wav") as f:
                 sf.write(f.name, result.audio, result.sample_rate)
