@@ -220,6 +220,7 @@ dependencies = [
     { name = "misaki", extra = ["en", "ja"] },
     { name = "mlx-audio" },
     { name = "soundfile" },
+    { name = "unidic" },
 ]
 
 [package.metadata]
@@ -228,6 +229,7 @@ requires-dist = [
     { name = "misaki", extras = ["en", "ja"], specifier = "==0.9.4" },
     { name = "mlx-audio", specifier = "==0.4.8" },
     { name = "soundfile", specifier = "==0.14.0" },
+    { name = "unidic", specifier = "==1.1.0" },
 ]
 
 [[package]]
