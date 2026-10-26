@@ -7,4 +7,5 @@ dependencies = [
     "misaki[en,ja]==0.9.4",
     "mlx-audio==0.4.8",
     "soundfile==0.14.0",
+    "unidic==1.1.0",
 ]

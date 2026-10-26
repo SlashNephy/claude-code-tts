@@ -1,3 +1,4 @@
+import fcntl
 import json
 import os
 import re
@@ -8,7 +9,9 @@ from pathlib import Path
 
 import alkana
 import soundfile as sf
+import unidic
 from mlx_audio.tts.utils import load_model
+from unidic.download import download_version
 
 TTS_ENABLED = os.environ.get("CLAUDE_CODE_TTS_ENABLED", "0") == "1"
 MODEL_ID = os.environ.get("CLAUDE_CODE_TTS_MODEL_ID", "mlx-community/Kokoro-82M-bf16")
@@ -26,6 +29,21 @@ def load_json_file(file_name: str) -> dict:
 
     with file_path.open("r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def ensure_unidic_dictionary() -> None:
+    # unidic パッケージは辞書本体を含まず、venv を作り直すと消えるため、無ければ取得する
+    # mecabrc はダウンロード処理の最後に書かれるので、展開途中の辞書を完成品と誤認しない
+    mecabrc = Path(unidic.DICDIR) / "mecabrc"
+    if mecabrc.exists():
+        return
+
+    # Stop hook は非同期で並行に走りうるため、ダウンロードを排他する
+    lock_path = Path(unidic.DICDIR).parent / "download.lock"
+    with lock_path.open("w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        if not mecabrc.exists():
+            download_version()
 
 
 def english_to_kana(text: str) -> str:
@@ -57,6 +75,7 @@ if __name__ == "__main__":
     if LINE_LIMIT > 0:
         chunks = chunks[:LINE_LIMIT]
 
+    ensure_unidic_dictionary()
     model = load_model(MODEL_ID)
     for chunk in chunks:
         for result in model.generate(
